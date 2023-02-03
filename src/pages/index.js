@@ -1,7 +1,13 @@
-import SplashScreen from "./SplashScreen";
-import SignIn from "./SignIn";
+import SplashScreen from "./SplashScreen"
+import SignIn from "./SignIn"
+import SignUp from "./SignUp"
+import SignUpAddress from "./SignUpAddress"
+import SignUpSuccess from './SignUpSuccess'
 
 export {
     SplashScreen,
-    SignIn  
+    SignIn,
+    SignUp,
+    SignUpAddress,
+    SignUpSuccess,
 }

@@ -1,17 +1,13 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { 
-    SplashScreen,
-    SignIn
- } from './pages';
 
+import Router from './router';
 
 export default function App() {
     return (
         <>
             <NavigationContainer>
-                {/* <SplashScreen /> */}
-                <SignIn/>
+                <Router />
             </NavigationContainer>
         </>
     );
