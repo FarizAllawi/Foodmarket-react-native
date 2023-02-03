@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import { IllustrationSignUp } from '../../assets'
 import { Button , Gap} from '../../components'
@@ -19,7 +19,7 @@ const SignUpSuccess = ({ navigation }) => {
             <Text style={styles.subTitle}>some foods as a self-reward</Text>
             <Gap height={30} />
             <View style={styles.buttonContainer}>
-                <Button text="Find Foods" onPress={() => {}} />
+                <Button text="Find Foods" onPress={() => navigation.replace('MainApp')} />
             </View>
         </View>
     )
