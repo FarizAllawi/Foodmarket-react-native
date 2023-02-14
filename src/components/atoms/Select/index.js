@@ -6,8 +6,6 @@ import { Picker } from '@react-native-picker/picker'
 export default function Select (props) {
 
     const { label, placeholder } = props
-
-
     const [selectedLanguage, setSelectedLanguage] = useState();
 
     return (
