@@ -12,7 +12,8 @@ import {
     SignUpSuccess,
     Home,
     Profile,
-    Order
+    Order,
+    FoodDetail
  } from '../pages';
 
 const Stack = createNativeStackNavigator()
@@ -36,6 +37,7 @@ export default function Router() {
             <Stack.Screen name="SignUp" component={SignUp} options={{ headerShown: false }} />
             <Stack.Screen name="SignUpAddress" component={SignUpAddress} options={{ headerShown: false }} />
             <Stack.Screen name="SignUpSuccess" component={SignUpSuccess} options={{ headerShown: false }} />
+            <Stack.Screen name="FoodDetail" component={FoodDetail} options={{ headerShown: false }} />
             <Stack.Screen name="MainApp" component={MainApp} options={{ headerShown: false }} />
         </Stack.Navigator>
     )

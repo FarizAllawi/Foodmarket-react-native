@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import propTypes from 'prop-types'
-import { StyleSheet, ScrollView, View, Text, Image, useWindowDimensions } from 'react-native'
+import { StyleSheet, ScrollView, View, Text, Image, useWindowDimensions, TouchableOpacity } from 'react-native'
 import { TabView, SceneMap, TabBar } from 'react-native-tab-view';
+import { useNavigation } from '@react-navigation/native';
 import { Rating } from '../../atoms';
 
 const dummyData = {
@@ -82,12 +83,12 @@ const dummyData = {
 
 const TabContent = ({ route }) => {
     const [data, setData] = useState(dummyData[route])
+    const navigation = useNavigation()
 
     useEffect(() => {
         setData(dummyData[route])
     })
 
-   
     return (
 
         <ScrollView vertical showsVerticalScrollIndicator={false}>
@@ -95,24 +96,26 @@ const TabContent = ({ route }) => {
                 {
                     data?.map((data, index) => {
                         return (
-                            <View key={index} style={styles.content}>
-                                <Image  source={{
-                                            uri: data.picture,
-                                            method:"GET",
-                                            headers: {
-                                                Pragma: 'no-cache',
-                                            },
-                                        }} 
-                                        style={styles.TabContentImage} />
-                    
-                                <View style={styles.contentDescription}>  
-                                    <View>
-                                        <Text style={styles.title}>{data.title}</Text>
-                                        <Text style={styles.price}>IDR {data.price}</Text>
+                            <TouchableOpacity key={index} activeOpacity={0.7} onPress={() => navigation.navigate('FoodDetail')}>
+                                <View style={styles.content}>
+                                    <Image  source={{
+                                                uri: data.picture,
+                                                method:"GET",
+                                                headers: {
+                                                    Pragma: 'no-cache',
+                                                },
+                                            }} 
+                                            style={styles.TabContentImage} />
+                        
+                                    <View style={styles.contentDescription}>  
+                                        <View>
+                                            <Text style={styles.title}>{data.title}</Text>
+                                            <Text style={styles.price}>IDR {data.price}</Text>
+                                        </View>
                                     </View>
+                                    <Rating rating={data.rating} />
                                 </View>
-                                <Rating rating={data.rating} />
-                            </View>
+                            </TouchableOpacity>
                         )
                     })
                 }
@@ -148,6 +151,12 @@ const renderTabBar = props => (
       pressColor='white'
       tabStyle={{ width: 'auto'}}
       style={{ backgroundColor: 'white', paddingHorizontal: 24 , shadowColor: "#8D92A3",  shadowOffset: { width: 0, height:3}}}
+    //   style={{ 
+    //     backgroundColor: 'white',
+    //     elevation: 0, shadowOpacity: 0,
+    //     borderBottomColor: "#F2F2F2",
+    //     borderBottomWidth:1 
+    //   }}
       renderLabel={({ route, focused, color }) => (
             <Text style={{
                 fontFamily: 'Poppins-Medium',
@@ -177,6 +186,7 @@ const HomeTabSection = () => {
             renderScene={renderScene}
             onIndexChange={setIndex}
             initialLayout={{ width: layout.width  }}
+            style={{ backgroundColor: 'white' }}
         />
     )
 }
